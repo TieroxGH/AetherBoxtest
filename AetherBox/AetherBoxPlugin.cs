@@ -57,6 +57,7 @@ public sealed class AetherBoxPlugin : IDalamudPlugin, IDisposable
         });
 
         this.PluginInterface.UiBuilder.Draw += DrawUI;
+        this.PluginInterface.UiBuilder.OpenMainUi += ToggleMainWindow;
         this.PluginInterface.UiBuilder.OpenConfigUi += ToggleMainWindow;
     }
 

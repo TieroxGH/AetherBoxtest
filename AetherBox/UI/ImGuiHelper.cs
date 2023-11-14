@@ -326,9 +326,14 @@ public static class ImGuiHelper
         ImGui.TableNextColumn();
         ImGui.TextDisabled(string.Join(' ', keys));
     }
-
-
     #endregion
+
+    public static void TextWrappedColored(Vector4 color, string text)
+    {
+        ImGui.PushTextWrapPos();
+        ImGui.TextColored(color, text);
+        ImGui.PopTextWrapPos();
+    }
 
     public static bool IsInRect(Vector2 leftTop, Vector2 size)
     {

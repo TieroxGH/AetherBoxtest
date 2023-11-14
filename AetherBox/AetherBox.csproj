@@ -12,9 +12,9 @@
         <FileVersion>$(Version)</FileVersion>
         <IsPackable>false</IsPackable>
         <Authors>Slimey</Authors>
-        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>       
-        <ImplicitUsings>enable</ImplicitUsings>       
-        <Platforms>x64</Platforms>        
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Platforms>x64</Platforms>
     </PropertyGroup>
     <PropertyGroup>
         <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
@@ -27,36 +27,64 @@
         <PlatformTarget>x64</PlatformTarget>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      <NoWarn>1701;1702;IDE1006</NoWarn>
+        <NoWarn>1701;1702;IDE1006</NoWarn>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      <NoWarn>1701;1702;IDE1006</NoWarn>
-    </PropertyGroup>    
+        <NoWarn>1701;1702;IDE1006</NoWarn>
+    </PropertyGroup>
     <ItemGroup>
-        <ProjectReference Include="..\ECommons\ECommons\ECommons.csproj" />      
+        <Compile Remove="Attributes\LinkDescriptionAttribute.cs" />
     </ItemGroup>
 
     <ItemGroup>
-      <Using Include="Dalamud.Game.ClientState.Objects.Types" />
-      <Using Include="ImGuiNET" />
-      <Using Include="Lumina.Excel" />
-      <Using Include="System.Diagnostics.CodeAnalysis" />
-      <Using Include="System.Numerics" />
-      <Using Include="System.Reflection" />
+        <ProjectReference Include="..\ECommons\ECommons\ECommons.csproj" />
     </ItemGroup>
-    
+
     <ItemGroup>
-       <Content Include="..\Images\banner.png" Link="Images\banner.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
-       <Content Include="..\Images\close.png" Link="Images\close.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
-       <Content Include="..\Images\goat.png" Link="Images\goat.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
-       <Content Include="..\Images\logo.png" Link="Images\logo.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
-       <Content Include="..\Images\icon.png" Link="Images\icon.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
-       <Content Include="..\Images\banner1.png" Link="Images\image1.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+        <Using Include="Dalamud.Game.ClientState.Objects.Types" />
+        <Using Include="ImGuiNET" />
+        <Using Include="Lumina.Excel" />
+        <Using Include="System.Diagnostics.CodeAnalysis" />
+        <Using Include="System.Numerics" />
+        <Using Include="System.Reflection" />
     </ItemGroup>
-    
+
     <ItemGroup>
-      <PackageReference Include="Dalamud.ContextMenu" Version="1.3.1" />
-      <PackageReference Include="Svg" Version="3.4.5" />
-    </ItemGroup> 
-    
+        <Content Include="..\Images\banner.png"
+                 Link="Images\banner.png"
+                 CopyToOutputDirectory="PreserveNewest"
+                 Visible="false" />
+        <Content Include="..\Images\close.png"
+                 Link="Images\close.png"
+                 CopyToOutputDirectory="PreserveNewest"
+                 Visible="false" />
+        <Content Include="..\Images\goat.png"
+                 Link="Images\goat.png"
+                 CopyToOutputDirectory="PreserveNewest"
+                 Visible="false" />
+        <Content Include="..\Images\logo.png"
+                 Link="Images\logo.png"
+                 CopyToOutputDirectory="PreserveNewest"
+                 Visible="false" />
+        <Content Include="..\Images\icon.png"
+                 Link="Images\icon.png"
+                 CopyToOutputDirectory="PreserveNewest"
+                 Visible="false" />
+        <Content Include="..\Images\banner1.png"
+                 Link="Images\image1.png"
+                 CopyToOutputDirectory="PreserveNewest"
+                 Visible="false" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="Attributes\LinkDescriptionAttribute.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Dalamud.ContextMenu"
+                          Version="1.3.1" />
+        <PackageReference Include="Svg"
+                          Version="3.4.5" />
+    </ItemGroup>
+
 </Project>
