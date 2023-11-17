@@ -8,7 +8,6 @@ using System.ComponentModel;
 using ImGuiNET;
 using System.Reflection;
 using System.Numerics;
-using AetherBox.Data;
 
 namespace AetherBox.UI;
 
@@ -154,77 +153,6 @@ public static class ImGuiHelper
             result = NoPaddingNoColorImageButton(texture.ImGuiHandle, size, id);
         }, wholeWidth, size.X);
         return result;
-    }
-
-    internal static void DrawActionOverlay(Vector2 cursor, float width, float percent)
-    {
-        var pixPerUnit = width / 82;
-
-        if (percent < 0)
-        {
-            if (IconSet.GetTexture("ui/uld/icona_frame_hr1.tex", out var cover))
-            {
-                ImGui.SetCursorPos(cursor - new Vector2(pixPerUnit * 3, pixPerUnit * 4));
-
-                //var step = new Vector2(88f / cover.Width, 96f / cover.Height);
-                var start = new Vector2((96f * 0 + 4f) / cover.Width, (96f * 2) / cover.Height);
-
-                //Out Size is 88, 96
-                //Inner Size is 82, 82
-                ImGui.Image(cover.ImGuiHandle, new Vector2(pixPerUnit * 88, pixPerUnit * 94),
-                    start, start + new Vector2(88f / cover.Width, 94f / cover.Height));
-            }
-        }
-        else if (percent < 1)
-        {
-            if (IconSet.GetTexture("ui/uld/icona_recast_hr1.tex", out var cover))
-            {
-                ImGui.SetCursorPos(cursor - new Vector2(pixPerUnit * 3, pixPerUnit * 0));
-
-                var P = (int)(percent * 81);
-
-
-                var step = new Vector2(88f / cover.Width, 96f / cover.Height);
-                var start = new Vector2(P % 9 * step.X, P / 9 * step.Y);
-
-                //Out Size is 88, 96
-                //Inner Size is 82, 82
-                ImGui.Image(cover.ImGuiHandle, new Vector2(pixPerUnit * 88, pixPerUnit * 94),
-                    start, start + new Vector2(88f / cover.Width, 94f / cover.Height));
-            }
-        }
-        else
-        {
-            if (IconSet.GetTexture("ui/uld/icona_frame_hr1.tex", out var cover))
-            {
-
-                ImGui.SetCursorPos(cursor - new Vector2(pixPerUnit * 3, pixPerUnit * 4));
-
-                //Out Size is 88, 96
-                //Inner Size is 82, 82
-                ImGui.Image(cover.ImGuiHandle, new Vector2(pixPerUnit * 88, pixPerUnit * 94),
-                    new Vector2(4f / cover.Width, 0f / cover.Height),
-                    new Vector2(92f / cover.Width, 94f / cover.Height));
-            }
-        }
-
-        if (percent > 1)
-        {
-            if (IconSet.GetTexture("ui/uld/icona_recast2_hr1.tex", out var cover))
-            {
-                ImGui.SetCursorPos(cursor - new Vector2(pixPerUnit * 3, pixPerUnit * 0));
-
-                var P = (int)(percent % 1 * 81);
-
-                var step = new Vector2(88f / cover.Width, 96f / cover.Height);
-                var start = new Vector2((P % 9 + 9) * step.X, P / 9 * step.Y);
-
-                //Out Size is 88, 96
-                //Inner Size is 82, 82
-                ImGui.Image(cover.ImGuiHandle, new Vector2(pixPerUnit * 88, pixPerUnit * 94),
-                    start, start + new Vector2(88f / cover.Width, 94f / cover.Height));
-            }
-        }
     }
     #endregion
 

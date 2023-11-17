@@ -20,7 +20,7 @@ public sealed class AetherBoxPlugin : IDalamudPlugin, IDisposable
     static readonly List<IDisposable> _dis = new();
 
     public string Name => "AetherBox";
-    private const string CommandName = "/aetherbox";
+    private const string CommandName = "/atb";
 
     private DalamudPluginInterface PluginInterface { get; init; }
     private ICommandManager CommandManager { get; init; }

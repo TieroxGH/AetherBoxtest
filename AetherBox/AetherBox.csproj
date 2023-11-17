@@ -34,6 +34,8 @@
     </PropertyGroup>
     <ItemGroup>
         <Compile Remove="Attributes\LinkDescriptionAttribute.cs" />
+        <Compile Remove="Data\ActionID.cs" />
+        <Compile Remove="Data\IconSet.cs" />
     </ItemGroup>
 
     <ItemGroup>
@@ -50,41 +52,22 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Content Include="..\Images\banner.png"
-                 Link="Images\banner.png"
-                 CopyToOutputDirectory="PreserveNewest"
-                 Visible="false" />
-        <Content Include="..\Images\close.png"
-                 Link="Images\close.png"
-                 CopyToOutputDirectory="PreserveNewest"
-                 Visible="false" />
-        <Content Include="..\Images\goat.png"
-                 Link="Images\goat.png"
-                 CopyToOutputDirectory="PreserveNewest"
-                 Visible="false" />
-        <Content Include="..\Images\logo.png"
-                 Link="Images\logo.png"
-                 CopyToOutputDirectory="PreserveNewest"
-                 Visible="false" />
-        <Content Include="..\Images\icon.png"
-                 Link="Images\icon.png"
-                 CopyToOutputDirectory="PreserveNewest"
-                 Visible="false" />
-        <Content Include="..\Images\banner1.png"
-                 Link="Images\image1.png"
-                 CopyToOutputDirectory="PreserveNewest"
-                 Visible="false" />
+        <Content Include="..\Images\banner.png" Link="Images\banner.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+        <Content Include="..\Images\close.png" Link="Images\close.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+        <Content Include="..\Images\logo.png" Link="Images\logo.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+        <Content Include="..\Images\icon.png" Link="Images\icon.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+        <Content Include="..\Images\banner1.png" Link="Images\image1.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
     </ItemGroup>
 
     <ItemGroup>
         <None Include="Attributes\LinkDescriptionAttribute.cs" />
+        <None Include="Data\ActionID.cs" />
+        <None Include="Data\IconSet.cs" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Dalamud.ContextMenu"
-                          Version="1.3.1" />
-        <PackageReference Include="Svg"
-                          Version="3.4.5" />
+        <PackageReference Include="Dalamud.ContextMenu" Version="1.3.1" />
+        <PackageReference Include="Svg" Version="3.4.5" />
     </ItemGroup>
 
 </Project>

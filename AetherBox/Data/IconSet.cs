@@ -1,5 +1,3 @@
-using AetherBox.Services;
-using AetherBox.TextureItems;
 using Dalamud.Interface.Internal;
 using ECommons.DalamudServices;
 using ECommons.ExcelServices;

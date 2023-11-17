@@ -1,4 +1,3 @@
-using AetherBox.Services;
 using AetherBox.Configurations;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility;
