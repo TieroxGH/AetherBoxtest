@@ -2,8 +2,9 @@ using AetherBox.Configurations;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility;
 using Dalamud.Interface.Utility.Raii;
+using ImGuiNET;
 
-namespace AetherBox.UI;
+namespace AetherBox.Helpers.ImGuiExtensions;
 
 public static class ImguiTooltips
 {

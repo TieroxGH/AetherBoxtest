@@ -15,7 +15,7 @@ using Dalamud.Interface.Internal;
 
 namespace AetherBox;
 
-public sealed class AetherBoxPlugin : IDalamudPlugin, IDisposable
+public sealed class AetherBox : IDalamudPlugin, IDisposable
 {
     static readonly List<IDisposable> _dis = new();
 
@@ -24,31 +24,29 @@ public sealed class AetherBoxPlugin : IDalamudPlugin, IDisposable
 
     private DalamudPluginInterface PluginInterface { get; init; }
     private ICommandManager CommandManager { get; init; }
-    public Configuration Configuration { get; init; }
+    public PluginConfig Configuration { get; init; }
     public WindowSystem WindowSystem = new("AetherBox");
 
     private ConfigWindow ConfigWindow { get; init; }
     private MainWindow MainWindow { get; init; }
 
-    public AetherBoxPlugin(
+    public AetherBox(
         [RequiredVersion("1.0")] DalamudPluginInterface pluginInterface,
         [RequiredVersion("1.0")] ICommandManager commandManager)
     {
         this.PluginInterface = pluginInterface;
         this.CommandManager = commandManager;
 
-        this.Configuration = this.PluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
+        this.Configuration = this.PluginInterface.GetPluginConfig() as PluginConfig ?? new PluginConfig();
         this.Configuration.Initialize(this.PluginInterface);
 
-        // Assuming the images are in an 'Images' subfolder in the same directory as the assembly
+        // The images are in an 'Images' subfolder in the same directory as the assembly
         var imagePath = Path.Combine(PluginInterface.AssemblyLocation.Directory?.FullName!, "Images", "logo.png");
         var logoImage = this.PluginInterface.UiBuilder.LoadImage(imagePath);
 
-
-        ConfigWindow = new ConfigWindow(this);
         MainWindow = new MainWindow(this, logoImage);
         
-        WindowSystem.AddWindow(ConfigWindow);
+        //WindowSystem.AddWindow(ConfigWindow);
         WindowSystem.AddWindow(MainWindow);
 
         this.CommandManager.AddHandler(CommandName, new CommandInfo(OnCommand)
@@ -58,20 +56,22 @@ public sealed class AetherBoxPlugin : IDalamudPlugin, IDisposable
 
         this.PluginInterface.UiBuilder.Draw += DrawUI;
         this.PluginInterface.UiBuilder.OpenMainUi += ToggleMainWindow;
-        this.PluginInterface.UiBuilder.OpenConfigUi += ToggleMainWindow;
     }
 
     public void Dispose()
     {
         this.WindowSystem.RemoveAllWindows();
         
-        ConfigWindow.Dispose();
         MainWindow.Dispose();
         
         this.CommandManager.RemoveHandler(CommandName);
     }
 
-    // in response to the slash command, just display our main ui
+    /// <summary>
+    /// in response to the slash command, just display our main ui
+    /// </summary>
+    /// <param name="command"></param>
+    /// <param name="args"></param>
     private void OnCommand(string command, string args)
     {        
         MainWindow.IsOpen = true;
@@ -82,20 +82,22 @@ public sealed class AetherBoxPlugin : IDalamudPlugin, IDisposable
         this.WindowSystem.Draw();
     }
 
-    public void DrawConfigUI()
-    {
-        ConfigWindow.IsOpen = true;
-    }
+    public void DrawConfigUI() => ConfigWindow.IsOpen = true;
 
-    //
-    // Summary:
-    //     Toggle MainWindow is open state.
+
+    /// <summary>
+    /// Toggle MainWindow is open state.
+    /// </summary>
     private void ToggleMainWindow()
     {
         MainWindow.IsOpen = !MainWindow.IsOpen;
     }
 
-    // Public method to load images from the 'Images' folder within the assembly directory
+    /// <summary>
+    /// method to load images from the 'Images' folder within the assembly directory
+    /// </summary>
+    /// <param name="imageName"></param>
+    /// <returns></returns>
     public IDalamudTextureWrap? LoadImage(string imageName)
     {
         // Assuming the 'Images' folder is in the same directory as the assembly

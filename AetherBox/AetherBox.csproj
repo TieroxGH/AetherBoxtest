@@ -2,6 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <Import Project="Dalamud.Plugin.Bootstrap.targets" />
 
+    <!-- General Info -->
     <PropertyGroup>
         <TargetFramework>net7.0-windows</TargetFramework>
         <OutputType>Library</OutputType>
@@ -16,10 +17,14 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Platforms>x64</Platforms>
     </PropertyGroup>
+
+    <!-- Additional Info -->
     <PropertyGroup>
         <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
         <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     </PropertyGroup>
+
+    <!-- Build Configurations -->
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
         <PlatformTarget>x64</PlatformTarget>
     </PropertyGroup>
@@ -32,16 +37,19 @@
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
         <NoWarn>1701;1702;IDE1006</NoWarn>
     </PropertyGroup>
+
+    <!-- PackageReference -->
     <ItemGroup>
         <Compile Remove="Attributes\LinkDescriptionAttribute.cs" />
-        <Compile Remove="Data\ActionID.cs" />
-        <Compile Remove="Data\IconSet.cs" />
+        <Compile Remove="UI\MainWindowConfigWindowTab.cs" />
     </ItemGroup>
 
+    <!-- PackageReference -->
     <ItemGroup>
         <ProjectReference Include="..\ECommons\ECommons\ECommons.csproj" />
     </ItemGroup>
 
+    <!-- PackageReference -->
     <ItemGroup>
         <Using Include="Dalamud.Game.ClientState.Objects.Types" />
         <Using Include="ImGuiNET" />
@@ -51,40 +59,25 @@
         <Using Include="System.Reflection" />
     </ItemGroup>
 
+    <!-- PackageReference -->
     <ItemGroup>
-        <Content Include="..\Images\banner.png"
-                 Link="Images\banner.png"
-                 CopyToOutputDirectory="PreserveNewest"
-                 Visible="false" />
-        <Content Include="..\Images\close.png"
-                 Link="Images\close.png"
-                 CopyToOutputDirectory="PreserveNewest"
-                 Visible="false" />
-        <Content Include="..\Images\logo.png"
-                 Link="Images\logo.png"
-                 CopyToOutputDirectory="PreserveNewest"
-                 Visible="false" />
-        <Content Include="..\Images\icon.png"
-                 Link="Images\icon.png"
-                 CopyToOutputDirectory="PreserveNewest"
-                 Visible="false" />
-        <Content Include="..\Images\banner1.png"
-                 Link="Images\image1.png"
-                 CopyToOutputDirectory="PreserveNewest"
-                 Visible="false" />
+        <Content Include="..\Images\banner.png" Link="Images\banner.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+        <Content Include="..\Images\close.png" Link="Images\close.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+        <Content Include="..\Images\logo.png" Link="Images\logo.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+        <Content Include="..\Images\icon.png" Link="Images\icon.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+        <Content Include="..\Images\banner1.png" Link="Images\image1.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
     </ItemGroup>
 
+    <!-- PackageReference -->
     <ItemGroup>
         <None Include="Attributes\LinkDescriptionAttribute.cs" />
-        <None Include="Data\ActionID.cs" />
-        <None Include="Data\IconSet.cs" />
+        <None Include="UI\MainWindowConfigWindowTab.cs" />
     </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Dalamud.ContextMenu"
-                          Version="1.3.1" />
-        <PackageReference Include="Svg"
-                          Version="3.4.5" />
+    <!-- PackageReference -->
+    <ItemGroup>       
+        <PackageReference Include="Dalamud.ContextMenu" Version="1.3.1" />
+        <PackageReference Include="Svg" Version="3.4.5" />
     </ItemGroup>
 
 </Project>

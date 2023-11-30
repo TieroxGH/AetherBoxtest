@@ -1,4 +1,5 @@
-using System.Drawing;
+using AetherBox.Configurations;
+using AetherBox.Helpers.ImGuiExtensions;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Internal;
 using Dalamud.Interface.Utility;
@@ -12,7 +13,7 @@ public class MainWindow : Window, IDisposable
 {
     private readonly IDalamudTextureWrap LogoImage;
     private readonly IDalamudTextureWrap CloseButtonTexture;
-    private readonly AetherBoxPlugin Plugin;
+    private readonly AetherBox Plugin;
     private static float Scale => ImGuiHelpers.GlobalScale;
 
     // Add flags for each category's open state
@@ -20,7 +21,7 @@ public class MainWindow : Window, IDisposable
     private bool isCategorySettingsOpen = false;
     private string selectedCategory;
 
-    public MainWindow(AetherBoxPlugin plugin, IDalamudTextureWrap logoImage)
+    public MainWindow(AetherBox plugin, IDalamudTextureWrap logoImage)
         : base("AetherBox Menu", ImGuiWindowFlags.NoScrollbar, false)
     {
         SizeCondition = ImGuiCond.FirstUseEver;
@@ -40,26 +41,27 @@ public class MainWindow : Window, IDisposable
         CloseButtonTexture = plugin.LoadImage("close.png");
     }
 
-    //
-    // Summary:
-    //     Code to be executed when the window is closed.
+    /// <summary>
+    /// Code to be executed when the window is closed.
+    /// </summary>
     public override void OnClose()
     {
         Plugin.Configuration.Save();
         base.OnClose();
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public void Dispose()
     {
         this.LogoImage.Dispose();
     }
 
-    //
-    // Summary:
-    //     Code to be executed every time the window renders.
-    //
-    // Remarks:
-    //     In this method, implement your drawing code. You do NOT need to ImGui.Begin your window.
+    /// <summary>
+    /// Code to be executed every time the window renders.
+    /// </summary>
+    /// <remarks>In this method, implement your drawing code. You do NOT need to ImGui.Begin your window.</remarks>
     public override void Draw()
     {
         using var style = ImRaii.PushStyle(ImGuiStyleVar.SelectableTextAlign, new Vector2(0.5f, 0.5f));
@@ -127,7 +129,9 @@ public class MainWindow : Window, IDisposable
         }
     }
 
-    // Draw the navigation panel
+    /// <summary>
+    /// Draw the navigation panel
+    /// </summary>
     private void DrawNavigationpanel()
     {
         // Info
@@ -144,7 +148,7 @@ public class MainWindow : Window, IDisposable
             }
         }
 
-        // Settings
+        //Settings
         if (ImGui.Selectable("Settings", isCategorySettingsOpen))
         {
             isCategorySettingsOpen = !isCategorySettingsOpen; // Toggle the state
@@ -205,6 +209,9 @@ public class MainWindow : Window, IDisposable
 
     }
 
+    /// <summary>
+    /// Draws the Top left Icon
+    /// </summary>
     private void DrawHeader()
     {
         // Calculate the available width for the header and constrain the image to that width while maintaining aspect ratio
@@ -229,6 +236,12 @@ public class MainWindow : Window, IDisposable
         ImGui.Image(this.LogoImage.ImGuiHandle, new Vector2(imageWidth, imageHeight));
     }
 
+    private PluginInfoUI pluginInfoUI = new PluginInfoUI();
+    private PluginSettingsUI pluginSettingsUI = new PluginSettingsUI();
+
+    /// <summary>
+    /// Draws thee left collum
+    /// </summary>
     private void DrawBody()
     {
         if (selectedCategory != null)
@@ -236,24 +249,17 @@ public class MainWindow : Window, IDisposable
             switch (selectedCategory)
             {
                 case "Info":
-                    DrawCategory1Content();
+                    pluginInfoUI.DrawUI();
                     break;
                 case "Settings":
-                    DrawCategory2Content();
+                    pluginSettingsUI.DrawUI();
                     break;
                     // Add more cases as needed for additional categories
             }
         }
     }
 
-    private void DrawCategory1Content()
-    {
-        // Your code to draw the contents of the Info category
-        ImGui.Text("This is the content for the Info category.");
-        // Add more ImGui calls to build out this category's UI
-    }
-
-    private void DrawCategory2Content()
+    private void DrawPluginSettings()
     {
         // Your code to draw the contents of the Settings category
         ImGui.Text("This is the content for the Settings category.");

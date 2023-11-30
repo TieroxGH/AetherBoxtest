@@ -9,12 +9,13 @@ using ImGuiNET;
 using System.Reflection;
 using System.Numerics;
 
-namespace AetherBox.UI;
+namespace AetherBox.Helpers.ImGuiExtensions;
 
 public static class ImGuiHelper
 {
     internal static void SetNextWidthWithName(string name)
     {
+
         ImGui.SetNextItemWidth(Math.Max(80 * ImGuiHelpers.GlobalScale, ImGui.CalcTextSize(name).X + 30 * ImGuiHelpers.GlobalScale));
     }
 
@@ -32,7 +33,7 @@ public static class ImGuiHelper
         var style = new Dalamud.Interface.GameFonts.GameFontStyle(Dalamud.Interface.GameFonts.GameFontStyle.GetRecommendedFamilyAndSize(Dalamud.Interface.GameFonts.GameFontFamily.Axis, size));
         var font = Svc.PluginInterface.UiBuilder.GetGameFontHandle(style).ImFont;
 
-        if ((IntPtr)font.NativePtr == IntPtr.Zero)
+        if ((nint)font.NativePtr == nint.Zero)
         {
             return ImGui.GetFont();
         }
@@ -67,7 +68,7 @@ public static class ImGuiHelper
 
         if (ImGui.BeginPopup(popUp))
         {
-            for (int i = 0; i < count; i++)
+            for (var i = 0; i < count; i++)
             {
                 if (ImGui.Selectable(items[i]))
                 {
@@ -101,7 +102,7 @@ public static class ImGuiHelper
     }
 
     #region Image
-    internal unsafe static bool SilenceImageButton(IntPtr handle, Vector2 size, bool selected, string id = "")
+    internal unsafe static bool SilenceImageButton(nint handle, Vector2 size, bool selected, string id = "")
     {
         ImGui.PushStyleColor(ImGuiCol.ButtonActive, ImGui.ColorConvertFloat4ToU32(*ImGui.GetStyleColorVec4(ImGuiCol.HeaderActive)));
         ImGui.PushStyleColor(ImGuiCol.ButtonHovered, ImGui.ColorConvertFloat4ToU32(*ImGui.GetStyleColorVec4(ImGuiCol.HeaderHovered)));
@@ -113,7 +114,7 @@ public static class ImGuiHelper
         return result;
     }
 
-    internal unsafe static bool NoPaddingNoColorImageButton(IntPtr handle, Vector2 size, string id = "")
+    internal unsafe static bool NoPaddingNoColorImageButton(nint handle, Vector2 size, string id = "")
     {
         ImGui.PushStyleColor(ImGuiCol.ButtonActive, 0);
         ImGui.PushStyleColor(ImGuiCol.ButtonHovered, 0);
@@ -124,7 +125,7 @@ public static class ImGuiHelper
         return result;
     }
 
-    internal static bool NoPaddingImageButton(IntPtr handle, Vector2 size, string id = "")
+    internal static bool NoPaddingImageButton(nint handle, Vector2 size, string id = "")
     {
         var padding = ImGui.GetStyle().FramePadding;
         ImGui.GetStyle().FramePadding = Vector2.Zero;

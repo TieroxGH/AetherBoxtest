@@ -9,7 +9,7 @@ using System.Drawing.Imaging;
 namespace AetherBox.Data;
 
 /// <summary>
-/// The type of the icon
+/// 
 /// </summary>
 public enum IconType : byte
 {
@@ -75,7 +75,7 @@ public enum IconType : byte
 }
 
 /// <summary>
-/// The class to find the icon.
+/// 
 /// </summary>
 public static class IconSet
 {
@@ -103,7 +103,7 @@ public static class IconSet
     /// <param name="text"></param>
     /// <param name="texture"></param>
     /// <returns></returns>
-    public static bool GetTexture(this ITexture text, out IDalamudTextureWrap texture) => GetTexture(text?.IconID ?? 0, out texture);
+    //public static bool GetTexture(this ITexture text, out IDalamudTextureWrap texture) => GetTexture(text?.IconID ?? 0, out texture);
 
 
     /// <summary>
