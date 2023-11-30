@@ -1,7 +1,7 @@
 namespace AetherBox.Attributes;
 
 /// <summary>
-/// The link to a image or web about your rotation.
+/// The link to an image or website.
 /// </summary>
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
 public class LinkDescriptionAttribute : Attribute

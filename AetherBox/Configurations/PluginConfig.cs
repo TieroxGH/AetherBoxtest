@@ -10,7 +10,7 @@ public class PluginConfig : IPluginConfiguration
     public int Version { get; set; } = 0;
 
     [NonSerialized]
-    private DalamudPluginInterface PluginInterface;
+    private DalamudPluginInterface ? PluginInterface;
 
     public void Initialize(DalamudPluginInterface pluginInterface)
     {

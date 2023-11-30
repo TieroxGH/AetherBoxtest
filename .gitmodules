@@ -1,3 +1,6 @@
 [submodule "ECommons"]
 	path = ECommons
 	url = https://github.com/NightmareXIV/ECommons.git
+[submodule "HaselCommon"]
+	path = HaselCommon
+	url = https://github.com/Haselnussbomber/HaselCommon

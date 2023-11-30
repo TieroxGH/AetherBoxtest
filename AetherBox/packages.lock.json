@@ -58,6 +58,9 @@
       },
       "ecommons": {
         "type": "Project"
+      },
+      "haselcommon": {
+        "type": "Project"
       }
     }
   }
