@@ -2,9 +2,11 @@
     "Author": "Kirbo",
     "Name": "AetherBox",
     "InternalName": "AetherBox",
-    "Description": "Multi Purpose Private Plugin.",
     "Punchline": "Features various tools and settings for private useage",
-    "Tags": [ "private", "multipurpose" ],
-    "repo_url": "https://github.com/BrakusTapus/AetherBox",
-    "ApplicableVersion": "any"
+    "Description": "Multi Purpose Private Plugin.",
+    "RepoUrl": "https://github.com/BrakusTapus/AetherBox",
+    "IconUrl": "https://github.com/BrakusTapus/AetherBox/blob/main/Images/logo.png",
+    "ImageUrls": [
+        "https://github.com/BrakusTapus/AetherBox/blob/main/Images/banner.png"
+    ]
 }
