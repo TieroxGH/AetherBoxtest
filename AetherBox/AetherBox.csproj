@@ -82,11 +82,25 @@
     </ItemGroup>
 
     <!-- Includes content -->
+
     <ItemGroup>
-        <Content Include="..\Images\banner.png" Link="Images\banner.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
-        <Content Include="..\Images\close.png" Link="Images\close.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
-        <Content Include="..\Images\icon.png" Link="Images\icon.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+        <Content Include="..\Images\banner.png">
+            <Link>Images\banner.png</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Visible>false</Visible>
+        </Content>
+        <Content Include="..\Images\close.png">
+            <Link>Images\close.png</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Visible>false</Visible>
+        </Content>
+        <Content Include="..\Images\icon.png">
+            <Link>Images\icon.png</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Visible>false</Visible>
+        </Content>
     </ItemGroup>
+
 
     <!-- Files that had their build option set to none -->
     <ItemGroup>
