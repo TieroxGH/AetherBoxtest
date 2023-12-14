@@ -1,5 +1,5 @@
 using AetherBox.Configurations;
-using AetherBox.Helpers.ImGuiExtensions;
+using AetherBox.Helpers.Extensions;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Internal;
 using Dalamud.Interface.Utility;
@@ -12,17 +12,16 @@ namespace AetherBox.UI;
 public class MainWindow : Window, IDisposable
 {
     private readonly IDalamudTextureWrap LogoImage;
-    private readonly IDalamudTextureWrap CloseButtonTexture;
+    private readonly IDalamudTextureWrap ? CloseButtonTexture;
     private readonly AetherBox Plugin;
     private static float Scale => ImGuiHelpers.GlobalScale;
 
     // Add flags for each category's open state
     private bool isCategoryInfoOpen = false;
     private bool isCategorySettingsOpen = false;
-    private string selectedCategory;
+    private string? selectedCategory;
 
-    public MainWindow(AetherBox plugin, IDalamudTextureWrap logoImage)
-        : base("AetherBox Menu", ImGuiWindowFlags.NoScrollbar, false)
+    public MainWindow(AetherBox plugin, IDalamudTextureWrap logoImage) : base("AetherBox Menu", ImGuiWindowFlags.NoScrollbar, false)
     {
         SizeCondition = ImGuiCond.FirstUseEver;
         Size = new Vector2(300, 500);
@@ -55,6 +54,7 @@ public class MainWindow : Window, IDisposable
     /// </summary>
     public void Dispose()
     {
+        AetherBox.PluginLog.Debug($"Disposing Images: {LogoImage}");
         this.LogoImage.Dispose();
     }
 
@@ -74,12 +74,12 @@ public class MainWindow : Window, IDisposable
                 && !ImGui.GetIO().ConfigFlags.HasFlag(ImGuiConfigFlags.ViewportsEnable))
             {
                 var str = string.Empty;
-                for (int i = 0; i < 150; i++)
+                for (var i = 0; i < 150; i++)
                 {
                     str += "Move Screen!";
                 }
 
-                using var font = ImRaii.PushFont(ImGuiHelper.GetFont(24));
+                using var font = ImRaii.PushFont(ImGuiExt.GetFont(24));
                 using var color = ImRaii.PushColor(ImGuiCol.Text, ImGui.ColorConvertFloat4ToU32(ImGuiColors.DalamudYellow));
                 ImGui.TextWrapped(str);
             }
@@ -89,7 +89,7 @@ public class MainWindow : Window, IDisposable
                 if (table)
                 {
                     // Set the width of the navigation panel column
-                    float navigationPanelWidth = 150 * Scale;
+                    var navigationPanelWidth = 150 * Scale;
                     ImGui.TableSetupColumn("AetherBox Config Side Bar", ImGuiTableColumnFlags.WidthFixed, navigationPanelWidth);
                     ImGui.TableNextColumn();
 
@@ -185,7 +185,7 @@ public class MainWindow : Window, IDisposable
             ImGui.SetCursorPosY(buttonPosY);
 
             // Draw the image button without padding and background color
-            if (ImGuiHelper.NoPaddingNoColorImageButton(CloseButtonTexture.ImGuiHandle, new Vector2(spaceForButton, spaceForButton)))
+            if (ImGuiExt.NoPaddingNoColorImageButton(CloseButtonTexture.ImGuiHandle, new Vector2(spaceForButton, spaceForButton)))
             {
                 // Ensure 'Plugin.Configuration' is not null before saving
                 if (Plugin.Configuration != null)
@@ -194,11 +194,8 @@ public class MainWindow : Window, IDisposable
                     Plugin.Configuration.Save();
 
                     // Ensure 'Svc.Log' is not null before logging
-                    if (Svc.Log != null)
-                    {
-                        // Log the information
-                        Svc.Log.Information("Settings have been saved.");
-                    }
+                    // Log the information
+                    Svc.Log?.Information("Settings have been saved.");
 
                     // Close the window by toggling the visibility off
                     this.IsOpen = false; // Assuming 'IsOpen' is a property that controls the window's visibility
@@ -215,13 +212,13 @@ public class MainWindow : Window, IDisposable
     private void DrawHeader()
     {
         // Calculate the available width for the header and constrain the image to that width while maintaining aspect ratio
-        float availableWidth = ImGui.GetContentRegionAvail().X;
-        float aspectRatio = (float)this.LogoImage.Width / this.LogoImage.Height;
-        float imageWidth = availableWidth;
-        float imageHeight = imageWidth / aspectRatio;
+        var availableWidth = ImGui.GetContentRegionAvail().X;
+        var aspectRatio = (float)this.LogoImage.Width / this.LogoImage.Height;
+        var imageWidth = availableWidth;
+        var imageHeight = imageWidth / aspectRatio;
 
         // Ensure the image is not taller than a certain threshold, e.g., 100 pixels
-        float maxHeight = 100.0f * Scale;
+        var maxHeight = 100.0f * Scale;
         if (imageHeight > maxHeight)
         {
             imageHeight = maxHeight;
@@ -229,15 +226,15 @@ public class MainWindow : Window, IDisposable
         }
 
         // Center the image in the available space
-        float spaceBeforeImage = (availableWidth - imageWidth) * 0.5f;
+        var spaceBeforeImage = (availableWidth - imageWidth) * 0.5f;
         ImGui.SetCursorPosX(ImGui.GetCursorPosX() + spaceBeforeImage);
 
         // Draw the image
         ImGui.Image(this.LogoImage.ImGuiHandle, new Vector2(imageWidth, imageHeight));
     }
 
-    private PluginInfoUI pluginInfoUI = new PluginInfoUI();
-    private PluginSettingsUI pluginSettingsUI = new PluginSettingsUI();
+    private PluginInfoUI pluginInfoUI = new();
+    private PluginSettingsUI pluginSettingsUI = new();
 
     /// <summary>
     /// Draws thee left collum

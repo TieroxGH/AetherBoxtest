@@ -37,19 +37,28 @@
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
         <NoWarn>1701;1702;IDE1006</NoWarn>
     </PropertyGroup>
+    <ItemGroup>
+      <Compile Remove="Helpers\**" />
+      <Compile Remove="UI\ImGuiExtensions\**" />
+      <EmbeddedResource Remove="Helpers\**" />
+      <EmbeddedResource Remove="UI\ImGuiExtensions\**" />
+      <None Remove="Helpers\**" />
+      <None Remove="UI\ImGuiExtensions\**" />
+    </ItemGroup>
 
-    <!-- PackageReference -->
+    <!-- Removed from compiler -->
     <ItemGroup>
         <Compile Remove="Attributes\LinkDescriptionAttribute.cs" />
+        <Compile Remove="UI\ConfigWindow.cs" />
         <Compile Remove="UI\MainWindowConfigWindowTab.cs" />
     </ItemGroup>
 
-    <!-- PackageReference -->
+    <!-- Submodule Reference -->
     <ItemGroup>
         <ProjectReference Include="..\ECommons\ECommons\ECommons.csproj" />
     </ItemGroup>
 
-    <!-- PackageReference -->
+    <!-- Global usings -->
     <ItemGroup>
         <Using Include="Dalamud.Game.ClientState.Objects.Types" />
         <Using Include="ImGuiNET" />
@@ -59,7 +68,7 @@
         <Using Include="System.Reflection" />
     </ItemGroup>
 
-    <!-- PackageReference -->
+    <!-- Includes content -->
     <ItemGroup>
         <Content Include="..\Images\banner.png" Link="Images\banner.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
         <Content Include="..\Images\close.png" Link="Images\close.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
@@ -68,14 +77,15 @@
         <Content Include="..\Images\banner1.png" Link="Images\image1.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
     </ItemGroup>
 
-    <!-- PackageReference -->
+    <!-- Files that had their build option set to none -->
+    <!-- Wont be compiled, but can still be seen in the IDE -->
     <ItemGroup>
         <None Include="Attributes\LinkDescriptionAttribute.cs" />
-        <None Include="UI\MainWindowConfigWindowTab.cs" />
+        <None Include="UI\ConfigWindow.cs" />
     </ItemGroup>
 
-    <!-- PackageReference -->
-    <ItemGroup>       
+    <!-- Package Reference -->
+    <ItemGroup>
         <PackageReference Include="Dalamud.ContextMenu" Version="1.3.1" />
         <PackageReference Include="Svg" Version="3.4.5" />
     </ItemGroup>

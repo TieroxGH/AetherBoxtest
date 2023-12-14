@@ -1,10 +1,10 @@
 {
-    "Author": "Slimey",
+    "Author": "Kirbo",
     "Name": "AetherBox",
     "InternalName": "AetherBox",
     "Description": "Multi Purpose Private Plugin.",
     "Punchline": "Features various tools and settings for private useage",
     "Tags": [ "private", "multipurpose" ],
-    "repo_url": "https://github.com/UnstableFlipPhone/AetherBox",
+    "repo_url": "https://github.com/BrakusTapus/AetherBox",
     "ApplicableVersion": "any"
 }

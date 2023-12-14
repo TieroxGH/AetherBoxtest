@@ -9,9 +9,9 @@ using ImGuiNET;
 using System.Reflection;
 using System.Numerics;
 
-namespace AetherBox.Helpers.ImGuiExtensions;
+namespace AetherBox.Helpers.Extensions;
 
-public static class ImGuiHelper
+public static class ImGuiExt
 {
     internal static void SetNextWidthWithName(string name)
     {
@@ -28,7 +28,7 @@ public static class ImGuiHelper
 
     const float INDENT_WIDTH = 180;
 
-    public unsafe static ImFontPtr GetFont(float size)
+    public static unsafe ImFontPtr GetFont(float size)
     {
         var style = new Dalamud.Interface.GameFonts.GameFontStyle(Dalamud.Interface.GameFonts.GameFontStyle.GetRecommendedFamilyAndSize(Dalamud.Interface.GameFonts.GameFontFamily.Axis, size));
         var font = Svc.PluginInterface.UiBuilder.GetGameFontHandle(style).ImFont;

@@ -4,7 +4,7 @@ using Dalamud.Interface.Utility;
 using Dalamud.Interface.Utility.Raii;
 using ImGuiNET;
 
-namespace AetherBox.Helpers.ImGuiExtensions;
+namespace AetherBox.Helpers.Extensions;
 
 public static class ImguiTooltips
 {
@@ -17,7 +17,7 @@ public static class ImguiTooltips
           ImGuiWindowFlags.NoInputs |
           ImGuiWindowFlags.AlwaysAutoResize;
 
-    const string TOOLTIP_ID = "EasySolver Tooltips";
+    const string TOOLTIP_ID = "Tooltip";
 
     public static void HoveredTooltip(string text)
     {
