@@ -149,10 +149,10 @@ public sealed class AetherBox : IDalamudPlugin, IDisposable
         this.Configuration.Initialize(this.PluginInterface);
 
         // The images are in an 'Images' subfolder in the same directory as the assembly
-        var imagePath = Path.Combine(PluginInterface.AssemblyLocation.Directory?.FullName!, "Images", "logo.png");
-        var logoImage = this.PluginInterface.UiBuilder.LoadImage(imagePath);
+        var imagePath = Path.Combine(PluginInterface.AssemblyLocation.Directory?.FullName!, "Images", "icon.png");
+        var iconImage = this.PluginInterface.UiBuilder.LoadImage(imagePath);
 
-        MainWindow = new MainWindow(this, logoImage);
+        MainWindow = new MainWindow(this, iconImage);
 
         WindowSystem.AddWindow(MainWindow);
 

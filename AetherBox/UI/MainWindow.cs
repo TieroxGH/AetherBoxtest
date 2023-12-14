@@ -11,7 +11,7 @@ namespace AetherBox.UI;
 
 public class MainWindow : Window, IDisposable
 {
-    private readonly IDalamudTextureWrap LogoImage;
+    private readonly IDalamudTextureWrap IconImage;
     private readonly IDalamudTextureWrap ? CloseButtonTexture;
     private readonly AetherBox Plugin;
     private static float Scale => ImGuiHelpers.GlobalScale;
@@ -21,7 +21,7 @@ public class MainWindow : Window, IDisposable
     private bool isCategorySettingsOpen = false;
     private string? selectedCategory;
 
-    public MainWindow(AetherBox plugin, IDalamudTextureWrap logoImage) : base("AetherBox Menu", ImGuiWindowFlags.NoScrollbar, false)
+    public MainWindow(AetherBox plugin, IDalamudTextureWrap iconImage) : base("AetherBox Menu", ImGuiWindowFlags.NoScrollbar, false)
     {
         SizeCondition = ImGuiCond.FirstUseEver;
         Size = new Vector2(300, 500);
@@ -32,7 +32,7 @@ public class MainWindow : Window, IDisposable
         };
         RespectCloseHotkey = true;
 
-        this.LogoImage = logoImage;
+        this.IconImage = iconImage;
         this.Plugin = plugin;
 
         // Load the close button image using the new method in AetherBoxPlugin
@@ -54,8 +54,8 @@ public class MainWindow : Window, IDisposable
     /// </summary>
     public void Dispose()
     {
-        AetherBox.PluginLog.Debug($"Disposing Images: {LogoImage}");
-        this.LogoImage.Dispose();
+        AetherBox.PluginLog.Debug($"Disposing Images: {IconImage}");
+        this.IconImage.Dispose();
     }
 
     /// <summary>
@@ -93,7 +93,7 @@ public class MainWindow : Window, IDisposable
                     ImGui.TableSetupColumn("AetherBox Config Side Bar", ImGuiTableColumnFlags.WidthFixed, navigationPanelWidth);
                     ImGui.TableNextColumn();
 
-                    // Draw the logo at the top
+                    // Draw the icon at the top
                     DrawHeader();
 
                     ImGui.Spacing();
@@ -213,7 +213,7 @@ public class MainWindow : Window, IDisposable
     {
         // Calculate the available width for the header and constrain the image to that width while maintaining aspect ratio
         var availableWidth = ImGui.GetContentRegionAvail().X;
-        var aspectRatio = (float)this.LogoImage.Width / this.LogoImage.Height;
+        var aspectRatio = (float)this.IconImage.Width / this.IconImage.Height;
         var imageWidth = availableWidth;
         var imageHeight = imageWidth / aspectRatio;
 
@@ -230,7 +230,7 @@ public class MainWindow : Window, IDisposable
         ImGui.SetCursorPosX(ImGui.GetCursorPosX() + spaceBeforeImage);
 
         // Draw the image
-        ImGui.Image(this.LogoImage.ImGuiHandle, new Vector2(imageWidth, imageHeight));
+        ImGui.Image(this.IconImage.ImGuiHandle, new Vector2(imageWidth, imageHeight));
     }
 
     private PluginInfoUI pluginInfoUI = new();

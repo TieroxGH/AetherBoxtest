@@ -4,15 +4,25 @@
 
     <!-- General Info -->
     <PropertyGroup>
+        <Authors>Kirbo</Authors>
+        <Company></Company>
+        <Version>0.0.0.1</Version>
+        <AssemblyVersion>$(Version)</AssemblyVersion>
+        <Description>Multi Purpose Private Plugin.</Description>
+        <Copyright></Copyright>
+        <PackageProjectUrl>https://github.com/BrakusTapus/AetherBox</PackageProjectUrl>
+        <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
+
+
         <TargetFramework>net7.0-windows</TargetFramework>
         <OutputType>Library</OutputType>
         <LangVersion>default</LangVersion>
         <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
         <Nullable>enable</Nullable>
-        <Version>0.0.0.1</Version>
+
         <FileVersion>$(Version)</FileVersion>
         <IsPackable>false</IsPackable>
-        <Authors>Slimey</Authors>
+
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
         <ImplicitUsings>enable</ImplicitUsings>
         <Platforms>x64</Platforms>
@@ -37,13 +47,15 @@
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
         <NoWarn>1701;1702;IDE1006</NoWarn>
     </PropertyGroup>
+
+    <!-- Content -->
     <ItemGroup>
-      <Compile Remove="Helpers\**" />
-      <Compile Remove="UI\ImGuiExtensions\**" />
-      <EmbeddedResource Remove="Helpers\**" />
-      <EmbeddedResource Remove="UI\ImGuiExtensions\**" />
-      <None Remove="Helpers\**" />
-      <None Remove="UI\ImGuiExtensions\**" />
+        <Compile Remove="Helpers\**" />
+        <Compile Remove="UI\ImGuiExtensions\**" />
+        <EmbeddedResource Remove="Helpers\**" />
+        <EmbeddedResource Remove="UI\ImGuiExtensions\**" />
+        <None Remove="Helpers\**" />
+        <None Remove="UI\ImGuiExtensions\**" />
     </ItemGroup>
 
     <!-- Removed from compiler -->
@@ -72,13 +84,10 @@
     <ItemGroup>
         <Content Include="..\Images\banner.png" Link="Images\banner.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
         <Content Include="..\Images\close.png" Link="Images\close.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
-        <Content Include="..\Images\logo.png" Link="Images\logo.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
         <Content Include="..\Images\icon.png" Link="Images\icon.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
-        <Content Include="..\Images\banner1.png" Link="Images\image1.png" CopyToOutputDirectory="PreserveNewest" Visible="false" />
     </ItemGroup>
 
     <!-- Files that had their build option set to none -->
-    <!-- Wont be compiled, but can still be seen in the IDE -->
     <ItemGroup>
         <None Include="Attributes\LinkDescriptionAttribute.cs" />
         <None Include="UI\ConfigWindow.cs" />
@@ -86,7 +95,6 @@
 
     <!-- Package Reference -->
     <ItemGroup>
-        <PackageReference Include="Dalamud.ContextMenu" Version="1.3.1" />
         <PackageReference Include="Svg" Version="3.4.5" />
     </ItemGroup>
 

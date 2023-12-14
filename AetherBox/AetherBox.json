@@ -5,8 +5,8 @@
     "Punchline": "Features various tools and settings for private useage",
     "Description": "Multi Purpose Private Plugin.",
     "RepoUrl": "https://github.com/BrakusTapus/AetherBox",
-    "IconUrl": "https://github.com/BrakusTapus/AetherBox/blob/main/Images/logo.png",
+    "IconUrl": "https://github.com/BrakusTapus/AetherBox/blob/effea4d2fbfb0e156cfabef97d1c4320fba7eb07/Images/logo.png",
     "ImageUrls": [
-        "https://github.com/BrakusTapus/AetherBox/blob/main/Images/banner.png"
+        "https://github.com/BrakusTapus/AetherBox/blob/effea4d2fbfb0e156cfabef97d1c4320fba7eb07/Images/banner.png"
     ]
 }
