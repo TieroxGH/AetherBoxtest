@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommons", "ECommons\ECommons\ECommons.csproj", "{06243A3E-23A0-49B0-812B-7D9738670203}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HaselCommon", "HaselCommon\HaselCommon\HaselCommon.csproj", "{E0D583BF-22D4-44E0-AE4A-EFC46375E05D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,21 +31,12 @@ Global
 		{06243A3E-23A0-49B0-812B-7D9738670203}.Release|Any CPU.ActiveCfg = Release|x64
 		{06243A3E-23A0-49B0-812B-7D9738670203}.Release|x64.ActiveCfg = Release|x64
 		{06243A3E-23A0-49B0-812B-7D9738670203}.Release|x64.Build.0 = Release|x64
-		{E0D583BF-22D4-44E0-AE4A-EFC46375E05D}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{E0D583BF-22D4-44E0-AE4A-EFC46375E05D}.Debug|Any CPU.Build.0 = Debug|x64
-		{E0D583BF-22D4-44E0-AE4A-EFC46375E05D}.Debug|x64.ActiveCfg = Debug|x64
-		{E0D583BF-22D4-44E0-AE4A-EFC46375E05D}.Debug|x64.Build.0 = Debug|x64
-		{E0D583BF-22D4-44E0-AE4A-EFC46375E05D}.Release|Any CPU.ActiveCfg = Release|x64
-		{E0D583BF-22D4-44E0-AE4A-EFC46375E05D}.Release|Any CPU.Build.0 = Release|x64
-		{E0D583BF-22D4-44E0-AE4A-EFC46375E05D}.Release|x64.ActiveCfg = Release|x64
-		{E0D583BF-22D4-44E0-AE4A-EFC46375E05D}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{06243A3E-23A0-49B0-812B-7D9738670203} = {A6E7241B-2238-4CC9-8FED-593C10E44A91}
-		{E0D583BF-22D4-44E0-AE4A-EFC46375E05D} = {A6E7241B-2238-4CC9-8FED-593C10E44A91}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B17E85B1-5F60-4440-9F9A-3DDE877E8CDF}

@@ -74,6 +74,11 @@ public sealed class AetherBox : IDalamudPlugin, IDisposable
     private ICommandManager CommandManager { get; init; }
 
     /// <summary>
+    /// Property: Manages logging using pluginLog
+    /// </summary>
+    public static IPluginLog ? PluginLog { get; set; }
+
+    /// <summary>
     /// Property: Holds configuration settings for the plugin.
     /// <example>
     /// <code>
@@ -104,7 +109,7 @@ public sealed class AetherBox : IDalamudPlugin, IDisposable
     /// </code>
     /// </example>
     /// </summary>
-    private ConfigWindow ? ConfigWindow { get; init; }
+    //private ConfigWindow? ConfigWindow { get; init; }
 
     /// <summary>
     /// Property: Represents the main window of the plugin.
@@ -129,10 +134,16 @@ public sealed class AetherBox : IDalamudPlugin, IDisposable
     /// var aetherBox = new AetherBox(pluginInterface, commandManager);
     /// </code>
     /// </example>
-    public AetherBox([RequiredVersion("1.0")] DalamudPluginInterface pluginInterface, [RequiredVersion("1.0")] ICommandManager commandManager)
+    public AetherBox(DalamudPluginInterface pluginInterface, ICommandManager commandManager, IPluginLog pluginlog)
     {
+        PluginLog = pluginlog;
+        PluginLog.Debug($"PluginLog = {PluginLog}");
+
+        ECommonsMain.Init(pluginInterface, this, ECommons.Module.DalamudReflector, ECommons.Module.ObjectFunctions);
+
         this.PluginInterface = pluginInterface;
         this.CommandManager = commandManager;
+        
 
         this.Configuration = this.PluginInterface.GetPluginConfig() as PluginConfig ?? new PluginConfig();
         this.Configuration.Initialize(this.PluginInterface);
@@ -143,7 +154,6 @@ public sealed class AetherBox : IDalamudPlugin, IDisposable
 
         MainWindow = new MainWindow(this, logoImage);
 
-        //WindowSystem.AddWindow(ConfigWindow);
         WindowSystem.AddWindow(MainWindow);
 
         this.CommandManager.AddHandler(CommandName, new CommandInfo(OnCommand)
@@ -161,8 +171,9 @@ public sealed class AetherBox : IDalamudPlugin, IDisposable
     /// </summary>
     public void Dispose()
     {
+        PluginLog.Debug($" Naj Trebla used {CommandName} Mainwindow is now {MainWindow.IsOpen}");
         this.WindowSystem.RemoveAllWindows();
-
+        
         MainWindow.Dispose();
 
         this.CommandManager.RemoveHandler(CommandName);
@@ -176,7 +187,8 @@ public sealed class AetherBox : IDalamudPlugin, IDisposable
     /// <param name="args">Additional arguments passed with the command.</param>
     private void OnCommand(string command, string args)
     {
-        MainWindow.IsOpen = true;
+        MainWindow.IsOpen = !MainWindow.IsOpen;
+        PluginLog.Debug($"{CommandName} -> Mainwindow: {MainWindow.IsOpen}");
     }
 
     /// <summary>

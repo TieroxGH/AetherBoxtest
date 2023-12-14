@@ -37,19 +37,25 @@
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
         <NoWarn>1701;1702;IDE1006</NoWarn>
     </PropertyGroup>
+    <ItemGroup>
+      <Compile Remove="Helpers\**" />
+      <Compile Remove="UI\ImGuiExtensions\**" />
+      <EmbeddedResource Remove="Helpers\**" />
+      <EmbeddedResource Remove="UI\ImGuiExtensions\**" />
+      <None Remove="Helpers\**" />
+      <None Remove="UI\ImGuiExtensions\**" />
+    </ItemGroup>
 
     <!-- Removed from compiler -->
     <ItemGroup>
         <Compile Remove="Attributes\LinkDescriptionAttribute.cs" />
-        <Compile Remove="Helpers\ImGuiExtensions\ImGuiHelper.cs" />
-        <Compile Remove="Helpers\ImGuiExtensions\ImguiTooltips.cs" />
+        <Compile Remove="UI\ConfigWindow.cs" />
         <Compile Remove="UI\MainWindowConfigWindowTab.cs" />
     </ItemGroup>
 
     <!-- Submodule Reference -->
     <ItemGroup>
         <ProjectReference Include="..\ECommons\ECommons\ECommons.csproj" />
-        <ProjectReference Include="..\HaselCommon\HaselCommon\HaselCommon.csproj" />
     </ItemGroup>
 
     <!-- Global usings -->
@@ -75,18 +81,13 @@
     <!-- Wont be compiled, but can still be seen in the IDE -->
     <ItemGroup>
         <None Include="Attributes\LinkDescriptionAttribute.cs" />
-        <None Include="Helpers\ImGuiExtensions\ImGuiHelper.cs" />
-        <None Include="Helpers\ImGuiExtensions\ImguiTooltips.cs" />
-        <None Include="UI\MainWindowConfigWindowTab.cs" />
+        <None Include="UI\ConfigWindow.cs" />
     </ItemGroup>
 
     <!-- Package Reference -->
     <ItemGroup>
         <PackageReference Include="Dalamud.ContextMenu" Version="1.3.1" />
         <PackageReference Include="Svg" Version="3.4.5" />
-    </ItemGroup>
-    <ItemGroup>
-        <Folder Include="UI\ImGuiExtensions\" />
     </ItemGroup>
 
 </Project>

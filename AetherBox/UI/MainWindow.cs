@@ -1,5 +1,5 @@
 using AetherBox.Configurations;
-using AetherBox.Helpers.ImGuiExtensions;
+using AetherBox.Helpers.Extensions;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Internal;
 using Dalamud.Interface.Utility;
@@ -54,6 +54,7 @@ public class MainWindow : Window, IDisposable
     /// </summary>
     public void Dispose()
     {
+        AetherBox.PluginLog.Debug($"Disposing Images: {LogoImage}");
         this.LogoImage.Dispose();
     }
 
@@ -78,7 +79,7 @@ public class MainWindow : Window, IDisposable
                     str += "Move Screen!";
                 }
 
-                using var font = ImRaii.PushFont(ImGuiHelper.GetFont(24));
+                using var font = ImRaii.PushFont(ImGuiExt.GetFont(24));
                 using var color = ImRaii.PushColor(ImGuiCol.Text, ImGui.ColorConvertFloat4ToU32(ImGuiColors.DalamudYellow));
                 ImGui.TextWrapped(str);
             }
@@ -184,7 +185,7 @@ public class MainWindow : Window, IDisposable
             ImGui.SetCursorPosY(buttonPosY);
 
             // Draw the image button without padding and background color
-            if (ImGuiHelper.NoPaddingNoColorImageButton(CloseButtonTexture.ImGuiHandle, new Vector2(spaceForButton, spaceForButton)))
+            if (ImGuiExt.NoPaddingNoColorImageButton(CloseButtonTexture.ImGuiHandle, new Vector2(spaceForButton, spaceForButton)))
             {
                 // Ensure 'Plugin.Configuration' is not null before saving
                 if (Plugin.Configuration != null)
