@@ -10,6 +10,7 @@
         <AssemblyVersion>$(Version)</AssemblyVersion>
         <Description>Multi Purpose Private Plugin.</Description>
         <Copyright></Copyright>
+        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
         <PackageProjectUrl>https://github.com/BrakusTapus/AetherBox</PackageProjectUrl>
         <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
 
