@@ -13,17 +13,13 @@
         <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
         <PackageProjectUrl>https://github.com/BrakusTapus/AetherBox</PackageProjectUrl>
         <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
-
-
         <TargetFramework>net7.0-windows</TargetFramework>
         <OutputType>Library</OutputType>
         <LangVersion>default</LangVersion>
         <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
         <Nullable>enable</Nullable>
-
         <FileVersion>$(Version)</FileVersion>
         <IsPackable>false</IsPackable>
-
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
         <ImplicitUsings>enable</ImplicitUsings>
         <Platforms>x64</Platforms>
@@ -81,26 +77,14 @@
         <Using Include="System.Reflection" />
     </ItemGroup>
 
-    <!-- Includes content -->
-
+    <!-- Include all image files from the Images directory -->
     <ItemGroup>
-        <Content Include="..\Images\banner.png">
-            <Link>Images\banner.png</Link>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-            <Visible>false</Visible>
-        </Content>
-        <Content Include="..\Images\close.png">
-            <Link>Images\close.png</Link>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-            <Visible>false</Visible>
-        </Content>
-        <Content Include="..\Images\icon.png">
-            <Link>Images\icon.png</Link>
+        <Content Include="..\Images\*.png">
+            <Link>Images\%(Filename)%(Extension)</Link>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
             <Visible>false</Visible>
         </Content>
     </ItemGroup>
-
 
     <!-- Files that had their build option set to none -->
     <ItemGroup>
