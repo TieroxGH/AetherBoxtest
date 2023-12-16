@@ -3,22 +3,25 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# Personal items
+*.editorconfig
+*.gitattributes
+*.gitmodules
+.editorconfig
+.gitattributes
+.gitmodules
+.gitignore
+LICENSE.md
+
+# Packaging
+pack/
+
 # User-specific files
 *.rsuser
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
-*.editorconfig
-*.gitattributes
-*.gitmodules
-#*.md
-.editorconfig
-.gitattributes
-.gitmodules
-.gitignore
-
-LICENSE.md
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
