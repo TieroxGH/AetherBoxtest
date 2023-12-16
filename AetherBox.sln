@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommons", "ECommons\ECommo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EED8CB8B-DD4A-4339-BF45-527CA541486D}"
 	ProjectSection(SolutionItems) = preProject
-		..\KirboStorage\Resources\Plugins\.editorconfig = ..\KirboStorage\Resources\Plugins\.editorconfig
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		.gitmodules = .gitmodules
+		LICENSE.md = LICENSE.md
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SamplePlugin", "..\SamplePlugin\SamplePlugin\SamplePlugin.csproj", "{70886611-7674-4083-A44C-22B7D5952F04}"

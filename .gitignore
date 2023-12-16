@@ -408,3 +408,7 @@ FodyWeavers.xsd
 *.sln.iml
 /desktop.ini
 /.gitignore
+/LICENSE.md
+/.gitmodules
+/.gitattributes
+/.editorconfig
