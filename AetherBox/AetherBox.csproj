@@ -80,10 +80,10 @@
 
     <!-- Include all image files from the Images directory -->
     <ItemGroup>
-        <Content Include="..\Images\*.png">
-            <Link>Images\%(Filename)%(Extension)</Link>
+        <Content Include="..\images\*.png">
+            <Link>images\%(Filename)%(Extension)</Link>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-            <Visible>false</Visible>
+            <Visible>true</Visible>
         </Content>
     </ItemGroup>
 
