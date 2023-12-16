@@ -11,8 +11,14 @@
 *.sln.docstates
 *.editorconfig
 *.gitattributes
-#*.gitmodules
-*.md
+*.gitmodules
+#*.md
+.editorconfig
+.gitattributes
+.gitmodules
+.gitignore
+
+LICENSE.md
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -400,3 +406,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/desktop.ini
+/.gitignore
