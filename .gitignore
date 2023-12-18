@@ -6,10 +6,8 @@
 # Personal items
 *.editorconfig
 *.gitattributes
-*.gitmodules
 .editorconfig
 .gitattributes
-.gitmodules
 .gitignore
 LICENSE.md
 

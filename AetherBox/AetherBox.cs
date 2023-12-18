@@ -171,7 +171,7 @@ public sealed class AetherBox : IDalamudPlugin, IDisposable
     /// </summary>
     public void Dispose()
     {
-        PluginLog.Debug($" Naj Trebla used {CommandName} Mainwindow is now {MainWindow.IsOpen}");
+        PluginLog?.Debug($"  {Name} used {CommandName} Mainwindow is now {MainWindow.IsOpen}");
         this.WindowSystem.RemoveAllWindows();
         
         MainWindow.Dispose();

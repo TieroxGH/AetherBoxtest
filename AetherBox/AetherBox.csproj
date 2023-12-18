@@ -10,24 +10,16 @@
         <AssemblyVersion>$(Version)</AssemblyVersion>
         <Description>Multi Purpose Private Plugin.</Description>
         <Copyright></Copyright>
-        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
         <PackageProjectUrl>https://github.com/BrakusTapus/AetherBox</PackageProjectUrl>
         <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
-        <TargetFramework>net7.0-windows</TargetFramework>
         <OutputType>Library</OutputType>
-        <LangVersion>default</LangVersion>
-        <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-        <Nullable>enable</Nullable>
         <FileVersion>$(Version)</FileVersion>
         <IsPackable>false</IsPackable>
-        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
         <ImplicitUsings>enable</ImplicitUsings>
-        <Platforms>x64</Platforms>
     </PropertyGroup>
 
     <!-- Additional Info -->
     <PropertyGroup>
-        <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
         <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     </PropertyGroup>
 
