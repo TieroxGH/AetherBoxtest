@@ -8,10 +8,13 @@ using System.ComponentModel;
 using ImGuiNET;
 using System.Reflection;
 using System.Numerics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AetherBox.Helpers.Extensions;
 
-public static class ImGuiExt
+public static class ImGuiExtra
 {
     internal static void SetNextWidthWithName(string name)
     {
@@ -192,7 +195,7 @@ public static class ImGuiExt
     public static void ExecuteHotKeysPopup(string key, string command, string tooltip, bool showHand, params (Action action, VirtualKey[] keys)[] pairs)
     {
         if (!ImGui.IsItemHovered()) return;
-        if (!string.IsNullOrEmpty(tooltip)) ImguiTooltips.ShowTooltip(tooltip);
+        if (!string.IsNullOrEmpty(tooltip)) ImguiTooltips.Tooltip(tooltip);
 
         if (showHand) ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
 

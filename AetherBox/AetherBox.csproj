@@ -1,93 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
+    <!-- This sets default properties and dalamud references -->
     <Import Project="Dalamud.Plugin.Bootstrap.targets" />
 
-    <!-- General Info -->
+    <!-- General properties -->
     <PropertyGroup>
         <Authors>Kirbo</Authors>
-        <Company></Company>
-        <Version>0.0.0.2</Version>
-        <AssemblyVersion>$(Version)</AssemblyVersion>
-        <Description>Multi Purpose Private Plugin.</Description>
-        <Copyright></Copyright>
+        <Version>0.0.0.3</Version>
+        <Description>Multi Purpose Private Plugin. Don't get this tho, it doesn't do anything yet...</Description>
         <PackageProjectUrl>https://github.com/BrakusTapus/AetherBox</PackageProjectUrl>
         <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
-        <OutputType>Library</OutputType>
-        <FileVersion>$(Version)</FileVersion>
         <IsPackable>false</IsPackable>
-        <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
-    <!-- Additional Info -->
-    <PropertyGroup>
-        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-    </PropertyGroup>
+    <!-- Plugin Content -->
+    <ItemGroup>
+        <!-- images -->
+        <Content Include="..\images\*.png">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Visible>false</Visible>
+        </Content>
 
-    <!-- Build Configurations -->
-    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-        <PlatformTarget>x64</PlatformTarget>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-        <PlatformTarget>x64</PlatformTarget>
+        <!-- manifest file -->
+        <Content Include="AetherBox.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
 
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-        <NoWarn>1701;1702;IDE1006</NoWarn>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-        <NoWarn>1701;1702;IDE1006</NoWarn>
-    </PropertyGroup>
+    <!-- Package and Project References -->
+    <ItemGroup>
+        <!-- Package Reference -->
+        <PackageReference Include="Svg" Version="3.4.5" />
 
-    <!-- Content -->
+        <!-- Submodule Reference -->
+        <ProjectReference Include="..\ECommons\ECommons\ECommons.csproj" />
+    </ItemGroup>
+
+    <!-- Content 
     <ItemGroup>
         <Compile Remove="Helpers\**" />
         <Compile Remove="UI\ImGuiExtensions\**" />
+        <Compile Remove="Attributes\LinkDescriptionAttribute.cs" />
+        <Compile Remove="UI\ConfigWindow.cs" />
+        <Compile Remove="UI\MainWindowConfigWindowTab.cs" />
         <EmbeddedResource Remove="Helpers\**" />
         <EmbeddedResource Remove="UI\ImGuiExtensions\**" />
         <None Remove="Helpers\**" />
         <None Remove="UI\ImGuiExtensions\**" />
-    </ItemGroup>
-
-    <!-- Removed from compiler -->
-    <ItemGroup>
-        <Compile Remove="Attributes\LinkDescriptionAttribute.cs" />
-        <Compile Remove="UI\ConfigWindow.cs" />
-        <Compile Remove="UI\MainWindowConfigWindowTab.cs" />
-    </ItemGroup>
-
-    <!-- Submodule Reference -->
-    <ItemGroup>
-        <ProjectReference Include="..\ECommons\ECommons\ECommons.csproj" />
-    </ItemGroup>
-
-    <!-- Global usings -->
-    <ItemGroup>
-        <Using Include="Dalamud.Game.ClientState.Objects.Types" />
-        <Using Include="ImGuiNET" />
-        <Using Include="Lumina.Excel" />
-        <Using Include="System.Diagnostics.CodeAnalysis" />
-        <Using Include="System.Numerics" />
-        <Using Include="System.Reflection" />
-    </ItemGroup>
-
-    <!-- Include all image files from the Images directory -->
-    <ItemGroup>
-        <Content Include="..\images\*.png">
-            <Link>images\%(Filename)%(Extension)</Link>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-            <Visible>true</Visible>
-        </Content>
-    </ItemGroup>
-
-    <!-- Files that had their build option set to none -->
-    <ItemGroup>
-        <None Include="Attributes\LinkDescriptionAttribute.cs" />
-        <None Include="UI\ConfigWindow.cs" />
-    </ItemGroup>
-
-    <!-- Package Reference -->
-    <ItemGroup>
-        <PackageReference Include="Svg" Version="3.4.5" />
-    </ItemGroup>
+    </ItemGroup>     -->
 
 </Project>

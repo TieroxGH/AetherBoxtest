@@ -1,5 +1,7 @@
 namespace AetherBox.UI;
 
+using System;
+
 [AttributeUsage(AttributeTargets.Field)]
 internal class TabSkipAttribute : Attribute
 {

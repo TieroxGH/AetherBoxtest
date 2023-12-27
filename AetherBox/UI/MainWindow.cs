@@ -1,3 +1,5 @@
+using System;
+using System.Numerics;
 using AetherBox.Configurations;
 using AetherBox.Helpers.Extensions;
 using Dalamud.Interface.Colors;
@@ -6,12 +8,13 @@ using Dalamud.Interface.Utility;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Interface.Windowing;
 using ECommons.DalamudServices;
+using ImGuiNET;
 
 namespace AetherBox.UI;
 
 public class MainWindow : Window, IDisposable
 {
-    private readonly IDalamudTextureWrap IconImage;
+    private readonly IDalamudTextureWrap ? IconImage;
     private readonly IDalamudTextureWrap ? CloseButtonTexture;
     private readonly AetherBox Plugin;
     private static float Scale => ImGuiHelpers.GlobalScale;
@@ -21,7 +24,7 @@ public class MainWindow : Window, IDisposable
     private bool isCategorySettingsOpen = false;
     private string? selectedCategory;
 
-    public MainWindow(AetherBox plugin, IDalamudTextureWrap iconImage) : base("AetherBox Menu", ImGuiWindowFlags.NoScrollbar, false)
+    public MainWindow(AetherBox plugin, IDalamudTextureWrap iconImage, IDalamudTextureWrap closeButtonTexture) : base("AetherBox Menu", ImGuiWindowFlags.NoScrollbar, false)
     {
         SizeCondition = ImGuiCond.FirstUseEver;
         Size = new Vector2(300, 500);
@@ -33,6 +36,7 @@ public class MainWindow : Window, IDisposable
         RespectCloseHotkey = true;
 
         this.IconImage = iconImage;
+        this.CloseButtonTexture = closeButtonTexture;
         this.Plugin = plugin;
 
         // Load the close button image using the new method in AetherBoxPlugin
@@ -54,8 +58,8 @@ public class MainWindow : Window, IDisposable
     /// </summary>
     public void Dispose()
     {
-        AetherBox.PluginLog.Debug($"Disposing Images: {IconImage}");
         this.IconImage.Dispose();
+        this.CloseButtonTexture.Dispose();
     }
 
     /// <summary>
@@ -79,7 +83,7 @@ public class MainWindow : Window, IDisposable
                     str += "Move Screen!";
                 }
 
-                using var font = ImRaii.PushFont(ImGuiExt.GetFont(24));
+                using var font = ImRaii.PushFont(ImGuiExtra.GetFont(24));
                 using var color = ImRaii.PushColor(ImGuiCol.Text, ImGui.ColorConvertFloat4ToU32(ImGuiColors.DalamudYellow));
                 ImGui.TextWrapped(str);
             }
@@ -185,7 +189,7 @@ public class MainWindow : Window, IDisposable
             ImGui.SetCursorPosY(buttonPosY);
 
             // Draw the image button without padding and background color
-            if (ImGuiExt.NoPaddingNoColorImageButton(CloseButtonTexture.ImGuiHandle, new Vector2(spaceForButton, spaceForButton)))
+            if (ImGuiExtra.NoPaddingNoColorImageButton(CloseButtonTexture.ImGuiHandle, new Vector2(spaceForButton, spaceForButton)))
             {
                 // Ensure 'Plugin.Configuration' is not null before saving
                 if (Plugin.Configuration != null)

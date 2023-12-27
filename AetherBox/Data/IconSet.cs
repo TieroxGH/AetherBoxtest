@@ -4,7 +4,9 @@ using ECommons.ExcelServices;
 using ECommons.ImGuiMethods;
 using Lumina.Excel.GeneratedSheets;
 using Svg;
+using System.Collections.Generic;
 using System.Drawing.Imaging;
+using System.IO;
 
 namespace AetherBox.Data;
 

@@ -1,5 +1,7 @@
 namespace AetherBox.UI;
 
+using ImGuiNET;
+
 internal class PluginInfoUI
 {
     public void DrawUI()

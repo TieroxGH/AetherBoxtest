@@ -12,6 +12,9 @@ using ECommons.DalamudServices;
 using ECommons.GameHelpers;
 using ECommons.ImGuiMethods;
 using Dalamud.Interface.Internal;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace AetherBox;
 
@@ -139,7 +142,7 @@ public sealed class AetherBox : IDalamudPlugin, IDisposable
         PluginLog = pluginlog;
         PluginLog.Debug($"PluginLog = {PluginLog}");
 
-        ECommonsMain.Init(pluginInterface, this, ECommons.Module.DalamudReflector, ECommons.Module.ObjectFunctions);
+        ECommonsMain.Init(pluginInterface, this, Module.All);
 
         this.PluginInterface = pluginInterface;
         this.CommandManager = commandManager;
@@ -148,11 +151,15 @@ public sealed class AetherBox : IDalamudPlugin, IDisposable
         this.Configuration = this.PluginInterface.GetPluginConfig() as PluginConfig ?? new PluginConfig();
         this.Configuration.Initialize(this.PluginInterface);
 
-        // The images are in an 'Images' subfolder in the same directory as the assembly
-        var imagePath = Path.Combine(PluginInterface.AssemblyLocation.Directory?.FullName!, "Images", "icon.png");
+        // The images should be in the output folder
+        var imagePath = Path.Combine(PluginInterface.AssemblyLocation.Directory?.FullName!, "icon.png");
         var iconImage = this.PluginInterface.UiBuilder.LoadImage(imagePath);
 
-        MainWindow = new MainWindow(this, iconImage);
+        // The images should be in the output folder
+        var imageClosePath = Path.Combine(PluginInterface.AssemblyLocation.Directory?.FullName!, "close.png");
+        var closeImage = this.PluginInterface.UiBuilder.LoadImage(imageClosePath);
+
+        MainWindow = new MainWindow(this, iconImage, closeImage);
 
         WindowSystem.AddWindow(MainWindow);
 
@@ -173,8 +180,10 @@ public sealed class AetherBox : IDalamudPlugin, IDisposable
     {
         PluginLog?.Debug($"  {Name} used {CommandName} Mainwindow is now {MainWindow.IsOpen}");
         this.WindowSystem.RemoveAllWindows();
-        
-        MainWindow.Dispose();
+        ECommonsMain.Dispose();
+
+
+        // MainWindow.Dispose();
 
         this.CommandManager.RemoveHandler(CommandName);
     }
@@ -224,7 +233,7 @@ public sealed class AetherBox : IDalamudPlugin, IDisposable
     public IDalamudTextureWrap? LoadImage(string imageName)
     {
         // Assuming the 'Images' folder is in the same directory as the assembly
-        var imagesDirectory = Path.Combine(this.PluginInterface.AssemblyLocation.Directory?.FullName!, "Images");
+        var imagesDirectory = Path.Combine(this.PluginInterface.AssemblyLocation.Directory?.FullName!);
         var imagePath = Path.Combine(imagesDirectory, imageName);
 
         // Check if the file exists before trying to load it

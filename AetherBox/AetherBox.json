@@ -1,12 +1,15 @@
 {
     "Author": "Kirbo",
     "Name": "AetherBox",
-    "Punchline": "Features various tools and settings for private useage",
+    "Punchline": "Attempt at making my own plugin, (WIP)",
     "Description": "Multi Purpose Private Plugin. Don't get this tho, it doesn't do anything yet...",
     "InternalName": "AetherBox",
     "RepoUrl": "https://github.com/BrakusTapus/AetherBox",
     "ApplicableVersion": "any",
-    "Tags": [ "Utility", "plugin" ],
+    "Tags": [
+        "Utility",
+        "plugin"
+    ],
     "DalamudApiLevel": 9,
     "AcceptsFeedback": false,
     "IconUrl": "https://raw.githubusercontent.com/BrakusTapus/AetherBox/main/images/icon.png",

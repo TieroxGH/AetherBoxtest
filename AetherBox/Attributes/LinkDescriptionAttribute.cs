@@ -1,5 +1,7 @@
 namespace AetherBox.Attributes;
 
+using System;
+
 /// <summary>
 /// The link to an image or website.
 /// </summary>

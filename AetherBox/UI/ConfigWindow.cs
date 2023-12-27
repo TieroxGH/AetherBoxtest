@@ -1,5 +1,8 @@
+using System;
+using System.Numerics;
 using AetherBox.Configurations;
 using Dalamud.Interface.Windowing;
+using ImGuiNET;
 
 namespace AetherBox.UI;
 
