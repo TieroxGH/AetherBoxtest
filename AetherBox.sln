@@ -5,14 +5,14 @@ VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AetherBox", "AetherBox\AetherBox.csproj", "{13C812E9-0D42-4B95-8646-40EEBF30636F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommons", "ECommons\ECommons\ECommons.csproj", "{06243A3E-23A0-49B0-812B-7D9738670203}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EED8CB8B-DD4A-4339-BF45-527CA541486D}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		.gitmodules = .gitmodules
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommons", "ECommons\ECommons\ECommons.csproj", "{44C70908-7998-4172-BE94-199933A5D1E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,16 +24,13 @@ Global
 		{13C812E9-0D42-4B95-8646-40EEBF30636F}.Debug|x64.Build.0 = Debug|x64
 		{13C812E9-0D42-4B95-8646-40EEBF30636F}.Release|x64.ActiveCfg = Release|x64
 		{13C812E9-0D42-4B95-8646-40EEBF30636F}.Release|x64.Build.0 = Release|x64
-		{06243A3E-23A0-49B0-812B-7D9738670203}.Debug|x64.ActiveCfg = Debug|x64
-		{06243A3E-23A0-49B0-812B-7D9738670203}.Debug|x64.Build.0 = Debug|x64
-		{06243A3E-23A0-49B0-812B-7D9738670203}.Release|x64.ActiveCfg = Release|x64
-		{06243A3E-23A0-49B0-812B-7D9738670203}.Release|x64.Build.0 = Release|x64
+		{44C70908-7998-4172-BE94-199933A5D1E1}.Debug|x64.ActiveCfg = Debug|x64
+		{44C70908-7998-4172-BE94-199933A5D1E1}.Debug|x64.Build.0 = Debug|x64
+		{44C70908-7998-4172-BE94-199933A5D1E1}.Release|x64.ActiveCfg = Release|x64
+		{44C70908-7998-4172-BE94-199933A5D1E1}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{70886611-7674-4083-A44C-22B7D5952F04} = {EED8CB8B-DD4A-4339-BF45-527CA541486D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B17E85B1-5F60-4440-9F9A-3DDE877E8CDF}

@@ -6,7 +6,7 @@
     <!-- General properties -->
     <PropertyGroup>
         <Authors>Kirbo</Authors>
-        <Version>0.0.0.3</Version>
+        <Version>0.0.0.4</Version>
         <Description>Multi Purpose Private Plugin. Don't get this tho, it doesn't do anything yet...</Description>
         <PackageProjectUrl>https://github.com/BrakusTapus/AetherBox</PackageProjectUrl>
         <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
